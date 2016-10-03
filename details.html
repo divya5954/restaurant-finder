@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="materialize/css/materialize.min.css">
+        <link rel='stylesheet' href="css/materialize_red_black_theme.css">
+        <link rel="stylesheet" href="css/details.css">
+    </head>
+
+    <body>
+       
+
+       <nav class='z-depth-3 col s12'>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo left hide-on-small-only">Kem Chow ? </a>
+                
+                <ul id="nav-mobile" class="right">
+                    <li class='waves-effect waves-light'><a href="#login-pop" name='search-btn' class="waves-effect waves-light btn modal-trigger z-depth-2 red">Login / Register</a></li>
+                </ul>
+            </div>
+        </nav>
+     
+        <!-- ************************ -->
+        <!-- POPUP FOR LOGIN / SIGNUP -->
+        <!-- ************************ -->  
+        <div id="login-pop" class="modal">
+            <div class="modal-content">
+              <!-- login or signup markup -->
+              <div class="col s12 tabs-col">
+                  <ul class="tabs">
+                    <li class="tab col s6 z-depth-1"><a href="#login">Login</a></li>
+                    <li class="tab col s6 z-depth-1"><a class="active" href="#signup">Sign Up</a></li> 
+                  </ul>
+                </div>
+                <!-- LOGIN -->
+                <div class="col s12 m12 l8 offset-l2">
+                    <div class="row">
+                        <form name='login' method='post' id='login' class="col s12">
+                         <div class="row">
+                            <div class="input-field col s12">
+                              <input id="email" type="email" name="email" class="validate" autocomplete="email">
+                              <label for="email">Email</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="password" type="password" name="password" class="validate">
+                              <label for="password">Password</label>
+                            </div>
+                          </div>
+                        <input type="hidden" name='login' value='1'>
+                        <div class='col s12 l12 center'><button name='submit' class="waves-effect waves-light btn z-depth-2 black-btn">Login</button></div>
+
+<!--                        <div class='col s12 l12 center'><p class='form-error center'><?php echo $error; ?></p></div>-->
+                        </form>
+                    </div>    
+                </div>
+                <!-- SIGNUP -->
+                <div class="col s12 l8 offset-l2">
+                    <div class="row">
+                        <form method="post" name='signup' id='signup' class="col s12" novalidate>
+<!--                             do email validation in php-->
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="username" name='username' type="text" class="validate" autocomplete='name' required>
+                              <label for="username">Username</label>
+                            </div>
+                          </div>
+                         <div class="row">
+                            <div class="input-field col s12">
+                              <input id="email" type="email" name="email" class="validate" autocomplete="email" required >
+                              <label for="email">Email</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="password" type="password" name='password' class="validate" required>
+                              <label for="password">Password</label>
+                            </div>
+                          </div>
+                          <input type="hidden" name='login' value='0'>
+                          <div class='col s12 l12 center'><button name='submit' class="waves-effect waves-light btn z-depth-2 black-btn">Sign Up</button></div>
+
+<!--                          <div class='col s12 l12 center'><p class='form-error center'><?php echo $error; ?></p></div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <main>
+          
+            <div class='container'>
+
+                <div class='row jumbo'>
+                    <div class='col s12 parallax-container'>
+                        <div class='col s12 parallax'>
+                            <img id='rest-img' src="images/rest1.jpg">
+                            <div class='text'>
+                                <h2>Name of the restaurant</h2>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> Address, Address again, PPAP Road, Surat</h5>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                
+                <!-- HIDE ADD REVIEW SECTION IF NOT LOGGED IN -->
+                <div class='row add-reviews card z-depth-1 hoverable'>
+                    <h3>Add review</h3>
+                    <div class='col s12 m12 l10 offset-l1'>
+                        
+                        <form method="post" name='new-review' id='new-review' class="col s12" novalidate>
+                            
+                        
+                        <!-- STARS SHIT HERE -->
+                        
+                        <!-- READ CAREFULLY : WHEN CLICKING ON A STAR, THE CORRESPONDING VALUE IS STORED IN THE HIDDEN INPUT ELEMENT WITH NAME RATING...SO WHEN FORM IS SUBMITTED, $_POST['rating'] WILL GIVE THE RATING -->
+                        <div class='row'>
+                          <div class='col s12'>
+                                <input name='rating' id='rating' type="hidden" value='1'>
+                                <div class='star-row'>
+                                    <span><p>Add your rating :</p></span>                                   
+                                    <span class='star' data-value='1'><i class='material-icons'>star</i></span>
+                                    <span class='star' data-value='2'><i class='material-icons'>star</i></span>
+                                    <span class='star' data-value='3'><i class='material-icons'>star</i></span>
+                                    <span class='star' data-value='4'><i class='material-icons'>star</i></span>
+                                    <span class='star' data-value='5'><i class='material-icons'>star</i></span>
+                                </div>
+                          </div>
+                        </div>
+                          
+                         <div class="row">
+                            <div class="input-field col s12">
+                              <textarea id='review' class='materialize-textarea'></textarea>
+                              <label for="review">Enter your review here</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="suggestion" type="text" name='suggestion'>
+                              <label for="suggestion">Other suggestions</label>
+                            </div>
+                          </div>
+                          
+                          
+                          <div class='col s12 l12 center'><button name='submit' class="waves-effect waves-light btn z-depth-2 black-btn">Submit</button></div>
+
+                            
+                        </form>
+                    </div>
+                </div>
+                <!-- ALL REVIEWS SECTION -->  
+                <div class='row reviews'>
+                   <h3>User reviews</h3>
+                   
+                   <!-- repeat the following markup for reviews -->
+                   <div class='col s12 user-review'>
+                       
+                       dafadfdaf
+                   </div>
+
+                </div>
+            </div>
+           
+           
+            
+        </main>
+  
+    
+     
+     
+        <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+        <script src="materialize/js/materialize.min.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/typed.js"></script>
+
+        <script>
+            
+         
+           // WHEN DOC READY
+            $(document).ready(function(){
+                // FOR SELECTING TABS
+                $('ul.tabs').tabs();
+                $('.modal-trigger').leanModal();
+                $('.parallax').parallax();
+                $('#review').val();
+                $('#review').trigger('autoresize');
+             
+            });
+            
+           
+            // STARS PART
+            // hovering 
+            $('.star-row').find('.star').hover(function(){
+                // check if clicked, then no hover effect
+                if (!$('.star-row').hasClass('clicked')){
+                    var value = parseInt($(this).attr("data-value"));
+                    //first remove color for all stars greater than hovered
+                    for(var i=6;i>=value;i--){
+                        $('.star-row .star:nth-child('+i+')').removeClass('star-hover');
+                    }
+                    //add color to all star below and equal to hovered 
+                    for(var i=1;i<=value;i++){
+                        $('.star-row .star:nth-child('+(i+1)+')').addClass('star-hover');
+                    }
+                }
+            }, function(){
+                // on hoverout clear all stars
+                // check if clicked, then don't clear, else clear
+                if (!$('.star-row').hasClass('clicked')){
+                        for(var i=6;i>=1;i--){
+                        $('.star-row .star:nth-child('+i+')').removeClass('star-hover');
+                    }
+                }
+            });
+            // on click
+            $('.star-row').find('.star').click(function(){
+                var value = parseInt($(this).attr("data-value"));
+                //first remove color for all stars greater than hovered
+                for(var i=6;i>=value;i--){
+                    $('.star-row .star:nth-child('+i+')').removeClass('star-hover');
+                }
+                //add color to all star below and equal to hovered 
+                for(var i=1;i<=value;i++){
+                    $('.star-row .star:nth-child('+(i+1)+')').addClass('star-hover');
+                }
+                // also give selected value to hidden input rating
+                $('#rating').val(value);
+                $('.star-row').addClass('clicked');
+//                console.log(value);
+            });
+            
+            
+            
+           
+                
+
+      </script>
+     
+    </body>
+</html>

@@ -1,0 +1,136 @@
+.red{
+    background-color:#e3301e !important;
+}
+.black-btn{
+    background-color : rgba(0, 0, 0, 0.9) !important;
+}
+
+*{
+/*    outline : 1px solid red;*/
+}
+body{
+    font-size: 20px;
+    background-color : #f3f3f3;
+    height:200vh;
+}
+
+/*------------NAV BAR --------------------------*/
+nav{
+    position: fixed;
+    top:0px;
+    z-index:9999;
+    padding-left:20px;
+    padding-right:40px;
+    background-color: rgba(0, 0, 0, 0.97) !important;
+}
+
+nav .btn{
+    font-size:80%;
+}
+
+
+/*--------------END OF NAV BAR -----------------*/
+/*--------------LOGIN POPUP-----------------------*/
+.modal.open{
+    height : 500px !important;
+}
+#login{
+    margin-top : 50px  !important;
+}
+.tabs .tab{
+    background-color : #fafafa !important;
+}
+
+/*--------------END OF LOGIN POPUP------------------*/
+/*--------------JUMBO PARALLAX--------------------*/
+.parallax-container{
+    height: 600px; 
+    padding:0 !important;
+}
+.parallax{
+    padding : 0 !important;
+}
+.parallax img{
+/*    z-index: 000;*/
+    opacity: 1;
+    
+}
+.parallax .text{
+/*    z-index: 9000;*/
+    position: absolute;
+    bottom:0px;
+    color : #fff;
+    padding-left:50px;
+    width:100%;
+    background : linear-gradient(rgba(0, 0, 0, 0) ,rgba(0, 0, 0, 0.38) 20%, rgba(0, 0, 0, 0.88) 50%);
+    padding-bottom: 30px;
+    padding-top: 50px;
+}
+.text h2{
+    color:#fff;
+    font-weight: 200;
+    font-size : 280%;
+    text-transform: capitalize;
+}
+.text h5{
+    font-size : 90%;
+}
+.text i{
+    margin-right:10px;
+}
+/*----------------END OF JUMBO SECTION------------*/
+/*--------------REVIEW SECTION---------------------*/
+.add-reviews{
+    padding:20px;
+    padding-bottom: 30px;
+    background-color:#f3f3f3;
+}
+.star-row{
+    margin-top : 30px;
+}
+
+.star-row p{
+    display: inline;
+    font-size : 80%;
+    padding-right: 20px;
+}
+.star{
+    color:#afafaf;
+    transition: all .2s; 
+    cursor: pointer;
+}
+.star-hover{
+    color : gold;
+}
+.star-row .star:nth-child(2){
+    color: gold;
+}
+.reviews h3, .add-reviews h3{
+    font-size : 110%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+.reviews{
+    margin-top : 70px ;
+}
+/*----------------END OF REVIEWS SECTION----------*/
+/*------------for the ratings--------------*/
+.rating-badge{
+    font-size : 65%;
+    color : white;
+}
+.rating-value{
+    font-size : 130%;
+}
+.good-rating{
+    background-color: #21841f !important;
+}
+.med-rating{
+    background-color : #ffac05 !important;
+}
+.bad-rating{
+    background-color : #b31e1e !important;
+}
