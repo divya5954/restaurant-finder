@@ -83,7 +83,7 @@ nav .btn{
 .add-reviews{
     padding:20px;
     padding-bottom: 30px;
-    background-color:#f7f7f7;
+    background-color:transparent;
 }
 .star-row{
     margin-top : 30px;
@@ -115,6 +115,24 @@ nav .btn{
 }
 .reviews{
     margin-top : 70px ;
+}
+.user-review{
+    padding: 10px 20px !important;
+    background-color : transparent;
+}
+.user-review .material-icons{
+    font-size : 80%;
+    color : #e3301e;
+}
+#user-name{
+    font-size : 75%;
+    font-weight:500;
+    text-transform: capitalize;
+    margin-left : 10px;
+    color : #e3301e;
+}
+#review-content{
+    font-size:90%;
 }
 /*----------------END OF REVIEWS SECTION----------*/
 /*------------for the ratings--------------*/
