@@ -100,10 +100,10 @@ nav .btn{
     cursor: pointer;
 }
 .star-hover{
-    color : gold;
+    color : #e3301e;
 }
 .star-row .star:nth-child(2){
-    color: gold;
+    color: #e3301e;
 }
 .reviews h3, .add-reviews h3{
     font-size : 110%;
@@ -118,7 +118,7 @@ nav .btn{
 }
 .user-review{
     padding: 10px 20px !important;
-    background-color : transparent;
+    background-color : #f7f7f7;
 }
 .user-review .material-icons{
     font-size : 80%;
