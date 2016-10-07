@@ -1,0 +1,120 @@
+.red{
+    background-color:#e3301e !important;
+}
+.black-btn{
+    background-color : rgba(0, 0, 0, 0.9) !important;
+}
+
+*{
+/*    outline : 1px solid red;*/
+}
+body{
+    font-size: 20px;
+    background-color : #f3f3f3;
+    height:200vh;
+}
+main{
+    padding-top : 120px;
+}
+
+/*------------NAV BAR --------------------------*/
+nav{
+    position: fixed;
+    top:0px;
+    z-index:9999;
+    padding-left:20px;
+    padding-right:40px;
+    background-color: rgba(0, 0, 0, 0.97) !important;
+}
+
+nav .btn{
+    font-size:80%;
+}
+
+
+/*--------------END OF NAV BAR -----------------*/
+/*-------------- ADMIN TABS SECTION-------------*/
+.admin .tabs{
+    background-color : transparent !important;
+    margin-bottom: 50px;
+}
+.admin .tabs li {
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-size : 90%;
+}
+/*----------------END OF ADMIN TABS SECTION-----*/
+
+/*--------------REVIEW SECTION---------------------*/
+.add-reviews{
+    padding:20px;
+    padding-bottom: 30px;
+    background-color:transparent;
+}
+.star-row{
+    margin-top : 30px;
+}
+
+.star-row p{
+    display: inline;
+    font-size : 80%;
+    padding-right: 20px;
+}
+.star{
+    color:#afafaf;
+    transition: all .2s; 
+    cursor: pointer;
+}
+.star-hover{
+    color : #e3301e;
+}
+.star-row .star:nth-child(2){
+    color: #e3301e;
+}
+.reviews h3, .add-reviews h3{
+    font-size : 110%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+.reviews{
+    margin-top : 70px ;
+}
+.user-review{
+    padding: 10px 20px !important;
+    background-color : #f7f7f7;
+}
+.user-review .material-icons{
+    font-size : 80%;
+    color : #e3301e;
+}
+#user-name{
+    font-size : 75%;
+    font-weight:500;
+    text-transform: capitalize;
+    margin-left : 10px;
+    color : #e3301e;
+}
+#review-content{
+    font-size:90%;
+}
+/*----------------END OF REVIEWS SECTION----------*/
+/*------------for the ratings--------------*/
+.rating-badge{
+    font-size : 65%;
+    color : white;
+}
+.rating-value{
+    font-size : 130%;
+}
+.good-rating{
+    background-color: #21841f !important;
+}
+.med-rating{
+    background-color : #ffac05 !important;
+}
+.bad-rating{
+    background-color : #b31e1e !important;
+}
