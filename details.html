@@ -96,13 +96,32 @@
                     <div class='col s12 parallax'>
                         <img id='rest-img' src="images/rest1.jpg">
 
-                        <div class='text'>
-                            <h2>Name of the restaurant</h2>
-                            <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> Address, Address again, PPAP Road, Surat</h5>
+                        <div class='text valign-wrapper'>
+                            <div class='col l8 info-set-1'>
+                                <h2>Name of the restaurant</h2>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> Address, Address again, PPAP Road, Surat</h5>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> 9586123267</h5>
+                            </div>
+                            <div class='col l4 info-set-2'>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> <span>opening time</span><span>&nbsp;-&nbsp; </span><span>closing time</span></h5>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> cost</h5>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> cuisine</h5>
+                                <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> veg or non-veg</h5>
+                                <a href="#menu-pop" name='menu-btn' class="waves-effect waves-light btn modal-trigger z-depth-2 menu-btn">View Menu</a>
+                            </div>
                         </div>
+                        <!-- MENU POPUP STARTS HERE -->
+                        <div id='menu-pop' class='modal'>
+                            <div class='modal-content'>
+                                cfakjhadskfhjkdajfklajd
+                            </div>
+                        </div>
+                            
                     </div>   
                 </div>
             </div>
+            
+            
           
             <div class='container'>
                
@@ -187,7 +206,6 @@
          
            // WHEN DOC READY
             $(document).ready(function(){
-                // FOR SELECTING TABS
                 $('ul.tabs').tabs();
                 $('.modal-trigger').leanModal();
                 $('.parallax').parallax();
