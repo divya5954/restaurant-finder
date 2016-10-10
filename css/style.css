@@ -20,6 +20,12 @@ header{
     height: 100%;
     justify-content: center;
 }
+.form-error {
+    color : #e3301e;
+    font-size : 85%;
+    font-style: italic;
+    letter-spacing: 1px;
+}
 /*------------NAV BAR --------------------------*/
 nav{
     position: fixed;
@@ -40,7 +46,7 @@ nav .btn{
 /*--------------END OF NAV BAR -----------------*/
 /*--------------LOGIN POPUP-----------------------*/
 .modal.open{
-    height : 500px !important;
+    height : 510px !important;
 }
 #login{
     margin-top : 50px  !important;
@@ -66,7 +72,7 @@ header img{
 }
 
 header .card{
-    background:rgba(255, 255, 255, 0.78);
+    background:rgba(255, 255, 255, 0.8);
     padding-bottom: 50px;
 }
 header button{

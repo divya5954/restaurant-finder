@@ -1,86 +1,35 @@
 <!DOCTYPE html>
 <?php
+
+// admin email : admin@restrofinder.com  password : 12345678 
+
 require ('config.php');
-//session_unset();
-//session_destroy();
+//session_start();
+error_reporting(0);
+
 $link = mysqli_connect("localhost", "root", "","restro");
-   
 if (mysqli_connect_error()){
     die('Unable to connect to the database');
 }
 
-error_reporting(0);
-session_unset();
-//$_SESSION['email']='sojdkj';
-print_r($_SESSION);
-print_r($_POST);
-
- 
-//session_start();
-
-/*//error_reporting(0);
-if(isset($_)
-
-if($_POST['logout'])
-{ echo "1";
-	try{
-		unset($_SESSION['email']);
-unset($_SESSION['password']);
-//unset($_SESSION['mypassword']);
-//unset($_SESSION['mytype']);
-	
-	session_unset(); 
-
-	session_destroy();
-	//header('Location: http://localhost/restro/restaurant-finder-master/index.php');
-	
-}catch(PDOException $e){
-	echo $e->getMessage();
+// check if logged in 
+if (array_key_exists("id",$_COOKIE)){
+    $_SESSION['id'] = $_COOKIE['id'];
 }
-} */
-
-// LOGIN SECTION
-if ($_POST['login'] == 1){
-    
+// check if admin, redirect to admin.php
+if ($_COOKIE["admin"] == 1){
+    header("Location:admin.php");
 }
 
-// SIGNUP SECTION
-if ($_POST['login'] == 0){
-//    $query = "SELECT blogger_id FROM `bloggers` WHERE email='".mysqli_real_escape_string($link, $_POST['email'])."'";
-//
-//    $result = mysqli_query($link, $query);
-//
-//    if (mysqli_num_rows($result) != 0){
-//        $error = "Email id already taken";
-//    } else{
-//        // INSERT ALL VALUES INTO DB
-//        $query = "INSERT INTO `bloggers` (`username`, `email`, `password`) values ( '".mysqli_real_escape_string($link, $_POST['username'])."', '".mysqli_real_escape_string($link, $_POST['email'])."', '".mysqli_real_escape_string($link, $_POST['password'])."')";
-//
-//        if (!mysqli_query($link, $query)){
-//            $error = "Sign up failed ! Please try again later.";
-//        }
-//        else{
-//            $query = "SELECT blogger_id FROM `bloggers` WHERE email='".mysqli_real_escape_string($link, $_POST['email'])."'";
-//            $result = mysqli_query($link, $query);
-//            $row = mysqli_fetch_array($result);
-//            $id = $row['blogger_id'];
-//
-//            //HASH PASSWORD
-//            $query = "UPDATE `bloggers` SET password= '".md5(md5($id).$_POST['password'])."' WHERE blogger_id =".$id." LIMIT 1";
-//            mysqli_query($link, $query);
-//
-//            //setting cookie and session
-//            $_SESSION["id"] = $id;
-//            setcookie("id", $id, time() + 60*60*24*15);
-//
-//            header("Location: blogger.php"); 
-
+// LOGOUT 
+if ($_GET['logout'] == 1){
+    session_unset();
+    setcookie("id", "", time()-60*60*24);
+    setcookie("admin", "", time()-60*60*24);
+    $_COOKIE["id"] = "";
+    $_COOKIE["admin"] = "";
+    header("Location:index.php");
 }
-
-
-
-
-
 
 
 
@@ -118,7 +67,6 @@ if ($_POST['login'] == 0){
 
                             <ul id="nav-mobile" class="right">
                                     <li><a id='log-option' class="waves-effect waves-light btn modal-trigger z-depth-2 red" href="#login-pop" name='log/reg'>Login / Register</a></li>
-<!--										<li class='waves-effect waves-light hide'><a href="#?logout=1" name='log/reg' class="waves-effect waves-light btn z-depth-2 red">Logout</a></li>-->
 
                             </ul>
                     </div>
@@ -126,12 +74,12 @@ if ($_POST['login'] == 0){
 
             <?php
 
-                if (array_key_exists('email',$_SESSION) || array_key_exists('password',$_SESSION)){
+                if (array_key_exists("id",$_SESSION)){
                     // display logout button 
             ?>
-            <script>
+            <script type="text/javascript">
                     $('#log-option').removeClass('modal-trigger');
-                    $('#log-option').attr('href','#?logout=1');
+                    $('#log-option').attr('href','index.php?logout=1');
                     $('#log-option').text('Logout');
             </script>
             <?php
@@ -214,24 +162,24 @@ if ($_POST['login'] == 0){
             <header>
                 <div class='container fullscreen valign-wrapper'>
                     <div class="row card">
-                                <div class="col m12 heading">
-                                     <h1 class='center'>Food Finder</h1>
-                                     <!--<h3 class='center'>don't stick pen into apple or pineapple</h3>-->
-                                </div>
-                                <div class='col s12 m12 l12'>
-                                    <form method='post' name='search' id='search' class="col s12">
-                                        <div class="col s12 m10 offset-m1 l8 offset-l2 valign-wrapper">
-                                            <div class="input-field col s9 m10 l11 search-query">
-                                                <input name='search-query' id="search" class='autotype' type="text">
-                                            </div>
+                        <div class="col m12 heading">
+                             <h1 class='center'>Food Finder</h1>
+                             <!--<h3 class='center'>don't stick pen into apple or pineapple</h3>-->
+                        </div>
+                        <div class='col s12 m12 l12'>
+                            <form method='post' name='search' id='search' class="col s12">
+                                <div class="col s12 m10 offset-m1 l8 offset-l2 valign-wrapper">
+                                    <div class="input-field col s9 m10 l11 search-query">
+                                        <input name='search-query' id="search" class='autotype' type="text">
+                                    </div>
 
-                                            <div class='col s3 m2 l1 center'><button name='search-btn' id='search' class="waves-effect waves-light btn z-depth-2 black"><i class="material-icons">search</i></button></div>
-                                        </div>
-                                    </form>   
-                                </div> 
-                                <div class='col s12 center'>
-                                        <a href="restaurant.php" class="waves-effect waves-light btn z-depth-2 red view-all-btn">View all restaurants</a>   
+                                    <div class='col s3 m2 l1 center'><button name='search-btn' id='search' class="waves-effect waves-light btn z-depth-2 black"><i class="material-icons">search</i></button></div>
                                 </div>
+                            </form>   
+                        </div> 
+                        <div class='col s12 center'>
+                                <a href="restaurant.php" class="waves-effect waves-light btn z-depth-2 red view-all-btn">View all restaurants</a>   
+                        </div>
                     </div>
 
                 </div>
@@ -266,7 +214,8 @@ if ($_POST['login'] == 0){
                         }
                         else{
                            // refresh the page
-                            $('.form-error-1').text(msg); // remove this later
+                            $('.form-error-1').text('Logged in successfully'); 
+                            location.reload();
                             
                             
                         }
@@ -290,7 +239,8 @@ if ($_POST['login'] == 0){
                         }
                         else{
                             //refresh the page
-                            $('.form-error-2').text(msg);
+                            $('.form-error-2').text("Registered successfully");
+                            location.reload();
                         }
                     }); 
                 });
@@ -324,18 +274,18 @@ if ($_POST['login'] == 0){
                     });
                     // RESTART THE TYPING EFFCT AFTER 3s 
                     $('.autotype').focusout(function(){
-                            setTimeout(function(){
-                                 if ($('.autotype').val() == ''){  // check if no string
-                                         $(".autotype").typed({
-                                                    strings: ["Search restaurants by name or cuisine",'Vegetarian','Non-veg'],
-                                                    typeSpeed: 50,
-                                                    startDelay : 100, 
-                                                    loop : true,
-                                                    backDelay : 1000,
-                                                    backspeed : 500
-                                                }); 
-                                 }
-                            },3000)
+                        setTimeout(function(){
+                         if ($('.autotype').val() == ''){  // check if no string
+                             $(".autotype").typed({
+                                        strings: ["Search restaurants by name or cuisine",'Vegetarian','Non-veg'],
+                                        typeSpeed: 50,
+                                        startDelay : 100, 
+                                        loop : true,
+                                        backDelay : 1000,
+                                        backspeed : 500
+                                    }); 
+                         }
+                        },3000)
                     });
 
 
@@ -345,18 +295,18 @@ if ($_POST['login'] == 0){
                             $('#header-bg').css("opacity","0");
                     },4700);   
                     setInterval(function(){
-                            imgIndex+=1;
-                            if (imgIndex>4)   // max index upto 4, change if needed
-                                    imgIndex=1;
-                            $('#header-bg').attr("src","images/header"+imgIndex+".jpg");
+                        imgIndex+=1;
+                        if (imgIndex>4)   // max index upto 4, change if needed
+                                imgIndex=1;
+                        $('#header-bg').attr("src","images/header"+imgIndex+".jpg");
 
-                            //FOR CROSSFADING
-                            setTimeout(function(){
-                                    $('#header-bg').css("opacity",".7");
-                            },100);
-                            setTimeout(function(){
-                                    $('#header-bg').css("opacity","0");
-                            },4700);    
+                        //FOR CROSSFADING
+                        setTimeout(function(){
+                                $('#header-bg').css("opacity",".7");
+                        },100);
+                        setTimeout(function(){
+                                $('#header-bg').css("opacity","0");
+                        },4700);    
 
                     },5000);
 
