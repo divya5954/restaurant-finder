@@ -3,46 +3,54 @@ error_reporting(0);
 include('config.php'); 
 require('login.php'); 
 
-$_SESSION['email']="aabha@restro.com";
-try{
-if(isset($_POST['submit']))
-{
-	$id = $_GET['id'];
-	$uemail=$_SESSION['email'];
-	if($_POST['review'])
-	{
-        $rev=$_POST['review'];
-	    $sql = $db->query('SELECT * FROM `user` WHERE `u_email`="'.$uemail.'"');
-            while($row = $sql->fetch())
-            {
-                if($uemail==$row['u_email'])
-                {
-                    $uid=$row['u_id'];
-                }
-            }
-	$sql=$db->prepare('INSERT INTO admin (a_rev,a_restid, u_id) VALUES (:a_rev,:a_restid,:a_uid)');
-	$sql->execute(array(':a_rev'=>$rev, ':a_restid'=>$id, ':a_uid'=>$uid));
-	}
-	if($_POST['suggest'])
-	{
-		$sug=$_POST['suggest'];
-		$sql = $db->query('SELECT * FROM `user` WHERE `u_email`="'.$uemail.'"');
-        while($row = $sql->fetch())
-        {
-            if($uemail==$row['u_email'])
-            {
-                $uid=$row['u_id'];
-            }
-        }
-		$sql=$db->prepare('INSERT INTO suggestion (s_id,u_id,suggestion) VALUES (:s_id, :u_id, :suggestion)');
-	$sql->execute(array(':s_id'=>NULL, ':u_id'=>$uid, 'suggestion'=>$sug));
-	}
-	
-	}
+// redirect if no rest_id
+if (!$_GET){
+    header('location:index.php');
+}
 
-}catch(PDOException $e){
-    echo $e->getMessage();
-    }
+// *****************************************
+// DON'T KNOW WHAT THE FOLLOWING CODE IS FOR
+// *****************************************
+//$_SESSION['email']="aabha@restro.com";
+//try{
+//if(isset($_POST['submit']))
+//{
+//	$id = $_GET['id'];
+//	$uemail=$_SESSION['email'];
+//	if($_POST['review'])
+//	{
+//        $rev=$_POST['review'];
+//	    $sql = $db->query('SELECT * FROM `user` WHERE `u_email`="'.$uemail.'"');
+//            while($row = $sql->fetch())
+//            {
+//                if($uemail==$row['u_email'])
+//                {
+//                    $uid=$row['u_id'];
+//                }
+//            }
+//	$sql=$db->prepare('INSERT INTO admin (a_rev,a_restid, u_id) VALUES (:a_rev,:a_restid,:a_uid)');
+//	$sql->execute(array(':a_rev'=>$rev, ':a_restid'=>$id, ':a_uid'=>$uid));
+//	}
+//	if($_POST['suggest'])
+//	{
+//		$sug=$_POST['suggest'];
+//		$sql = $db->query('SELECT * FROM `user` WHERE `u_email`="'.$uemail.'"');
+//        while($row = $sql->fetch())
+//        {
+//            if($uemail==$row['u_email'])
+//            {
+//                $uid=$row['u_id'];
+//            }
+//        }
+//		$sql=$db->prepare('INSERT INTO suggestion (s_id,u_id,suggestion) VALUES (:s_id, :u_id, :suggestion)');
+//	$sql->execute(array(':s_id'=>NULL, ':u_id'=>$uid, 'suggestion'=>$sug));
+//	}
+//	
+//	}
+//
+//}catch(PDOException $e){
+//    echo $e->getMessage();
+//    }
 ?>
 
 <!DOCTYPE html>
@@ -155,23 +163,35 @@ if(isset($_POST['submit']))
     
     <!-- START WORKING FROM HERE --> 
     <main>
+        
+    <?php
+    // for restaurant details
+        $query = "SELECT * FROM `restaurant` WHERE r_id = '".$_GET['id']."' LIMIT 1";
+        $result = mysqli_query($link, $query);
+        $row = mysqli_fetch_array($result);
+//        print_r($row);
+        
+        
+    ?>
          
     <div class='row jumbo'>
         <div class='col s12 parallax-container'>
             <div class='col s12 parallax'>
                 <img id='rest-img' src="images/rest1.jpg">
+                <img id='rest-img' src="<?php echo $row['r_pic'];?>">
+
 
                 <div class='text valign-wrapper'>
                     <div class='col l8 info-set-1'>
-                        <h2>Name of the restaurant</h2>
-                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> Address, Address again, PPAP Road, Surat</h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>stay_current_portrait</i> 9586123267</h5>
+                        <h2><?php echo $row['r_name']; ?></h2>
+                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> <?php echo $row['r_add']; ?></h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>stay_current_portrait</i><?php echo $row['r_contact']; ?></h5>
                     </div>
                     <div class='col l4 info-set-2'>
-                        <h5><i class='material-icons'>&#8377; &nbsp;</i><span>500</span></h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>query_builder</i> <span>opening time</span><span>&nbsp;-&nbsp; </span><span>closing time</span></h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>done</i> cuisine</h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>done</i> veg or non-veg</h5>
+                        <h5><i class='material-icons'>&#8377; &nbsp;</i><span><?php echo $row['r_cost']; ?></span></h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>query_builder</i> <span><?php echo $row['r_time']; ?></span><span>&nbsp;-&nbsp; </span><span>closing time</span></h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>done</i><?php echo $row['r_cuisine']; ?></h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>done</i> <?php echo $row['r_type']; ?></h5>
                         
                         
                     </div>
@@ -242,7 +262,7 @@ if(isset($_POST['submit']))
                 </div>
             </div>
             
-            
+            <!-- CODE FOR HIDING ADD REVIEW SECTION -->
             <?php
 
                 if (!array_key_exists("id",$_SESSION)){
@@ -257,6 +277,7 @@ if(isset($_POST['submit']))
                 }
 
             ?>
+            
             
             <!-- ALL REVIEWS SECTION -->  
             <div class='row reviews'>
