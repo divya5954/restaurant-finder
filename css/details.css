@@ -19,7 +19,11 @@ body{
     background-color : #f3f3f3;
     height:200vh;
 }
-
+.form-error {
+    color : #e3301e;
+    font-size : 80%;
+    letter-spacing: 1px;
+}
 /*------------NAV BAR --------------------------*/
 nav{
     position: fixed;

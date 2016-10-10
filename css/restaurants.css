@@ -12,7 +12,11 @@ body{
     font-size: 20px;
     background-color : #f3f3f3;
 }
-
+.form-error {
+    color : #e3301e;
+    font-size : 80%;
+    letter-spacing: 1px;
+}
 /*------------NAV BAR --------------------------*/
 nav{
     position: fixed;
@@ -89,6 +93,9 @@ nav .btn{
     padding-left:5px !important;
     padding-right:5px !important;
 }
+.rest-name a{
+    color : #e3301e;
+}
 .rest-pic img{
     max-width:100%;
     transition: all 1s;
@@ -96,14 +103,17 @@ nav .btn{
 .rest-pic img:hover{
     transform: scale(1.1);
 }
+.add-margin{
+    margin-top : 15px;
+}
 .rest-name h6{
     font-size : 130%;
-    margin-top:20px;
+    margin-top:0px;
     font-weight: 400;
     color : #e3301e;
     text-transform: capitalize;
 }
-.restaurants-cards button{
+.restaurants-cards .btn.black{
     font-size : 80%;
     margin-top:17px;
     background-color : rgba(0, 0, 0, 0.9) !important;

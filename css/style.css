@@ -22,8 +22,7 @@ header{
 }
 .form-error {
     color : #e3301e;
-    font-size : 85%;
-    font-style: italic;
+    font-size : 80%;
     letter-spacing: 1px;
 }
 /*------------NAV BAR --------------------------*/

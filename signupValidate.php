@@ -13,6 +13,9 @@ if (strlen($_POST['password'])<8){
 if (!$_POST['password']){
     $error = 'Please enter password';
 }
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $error = "Invalid email format"; 
+}
 if (!$_POST['email']){
     $error = 'Please enter a valid email id';
 }
