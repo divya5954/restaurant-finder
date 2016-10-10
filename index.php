@@ -3,12 +3,8 @@
 
 // admin email : admin@restrofinder.com  password : 12345678 
 error_reporting(0);
-//session_start();
-
 require ('config.php');
 require ('login.php');
-
-
 
 ?>
     <html>

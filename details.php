@@ -152,6 +152,8 @@ if(isset($_POST['submit']))
             </div>
         </div>
     </div>
+    
+    <!-- START WORKING FROM HERE --> 
     <main>
          
     <div class='row jumbo'>
@@ -163,31 +165,40 @@ if(isset($_POST['submit']))
                     <div class='col l8 info-set-1'>
                         <h2>Name of the restaurant</h2>
                         <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> Address, Address again, PPAP Road, Surat</h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> 9586123267</h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>stay_current_portrait</i> 9586123267</h5>
                     </div>
                     <div class='col l4 info-set-2'>
-                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> <span>opening time</span><span>&nbsp;-&nbsp; </span><span>closing time</span></h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> cost</h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> cuisine</h5>
-                        <h5 class='valign-wrapper'><i class='material-icons'>location_on</i> veg or non-veg</h5>
-                        <a href="#menu-pop" name='menu-btn' class="waves-effect waves-light btn modal-trigger z-depth-2 menu-btn">View Menu</a>
+                        <h5><i class='material-icons'>&#8377; &nbsp;</i><span>500</span></h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>query_builder</i> <span>opening time</span><span>&nbsp;-&nbsp; </span><span>closing time</span></h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>done</i> cuisine</h5>
+                        <h5 class='valign-wrapper'><i class='material-icons'>done</i> veg or non-veg</h5>
+                        
+                        
                     </div>
                 </div>
-                <!-- MENU POPUP STARTS HERE -->
-                <div id='menu-pop' class='modal'>
-                    <div class='modal-content'>
-                        cfakjhadskfhjkdajfklajd
-                    </div>
-                </div>
+               
 
                 </div>   
             </div>
         </div>
-
-
+        
+        <!-- MENU POPUP STARTS HERE -->
+        <div id='menu-pop' class='modal menu-pop'>
+            <div class='modal-content'>
+               
+                <!-- *********** -->
+                <!-- MENU IMAGES -->
+                <!-- *********** -->
+                <img src="images/header2.jpg">
+            </div>
+        </div>
+      
 
         <div class='container'>
-           
+           <div class='col s12 center'>
+               <a href="#menu-pop" name='menu-btn' class="waves-effect waves-light btn modal-trigger z-depth-1 menu-btn">View Menu</a>
+           </div>
+            
             <!-- HIDE ADD REVIEW SECTION IF NOT LOGGED IN -->
             <div class='row add-reviews'>
                 <h3>Add review</h3>
@@ -230,6 +241,22 @@ if(isset($_POST['submit']))
                 </form>
                 </div>
             </div>
+            
+            
+            <?php
+
+                if (!array_key_exists("id",$_SESSION)){
+                    
+            ?>
+            <script type="text/javascript">
+               $('.add-reviews').empty();
+               $('.add-reviews').append("<h3>Add review</h3>");
+               $('.add-reviews').append("<div class='col s12 center'><p class='muted-text'>Please login or register to write a review </p></div>");
+            </script>
+            <?php
+                }
+
+            ?>
             
             <!-- ALL REVIEWS SECTION -->  
             <div class='row reviews'>

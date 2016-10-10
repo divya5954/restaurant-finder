@@ -6,9 +6,8 @@
 }
 .menu-btn{
     background-color : transparent !important;
-    border : 1px solid #fff;
-    text-transform: capitalize;
-    font-size : 85%;
+    border : 1px solid #e3301e;
+    color : #e3301e;
 }
 
 *{
@@ -22,6 +21,11 @@ body{
 .form-error {
     color : #e3301e;
     font-size : 80%;
+    letter-spacing: 1px;
+}
+.muted-text{
+    font-size : 90%;
+    color : #7c7979;
     letter-spacing: 1px;
 }
 /*------------NAV BAR --------------------------*/
@@ -52,6 +56,14 @@ nav .btn{
 }
 
 /*--------------END OF LOGIN POPUP------------------*/
+/*--------------MENU POPUP SECTION------------------*/
+.modal.menu-pop.open{
+    height: auto !important;
+}
+.modal.menu-pop.open img{
+    width: 100%;
+}
+/*---------------------------------------------------*/
 /*--------------JUMBO PARALLAX--------------------*/
 .parallax-container{
     height: 600px; 
